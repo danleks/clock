@@ -1,6 +1,10 @@
 :root {
     --bg-color: rgba(0,0,0,.8);
-    --clock-color: #fff;
+    --digital-clock-color: #fff;
+    --analog-clock-color: blue;
+    --seconds-hand-color: black;
+    --minutes-hand-color: #ccc;
+    --hours-hand-color: #ccc;
 }
 
 html {
@@ -9,23 +13,72 @@ html {
   }
   *, *:before, *:after {
     box-sizing: inherit;
+    padding: 0;
+    margin: 0;
   }
 
-body {
+.clock {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-color: var(--bg-color);
 }
 
-.clock {
+.digital {
     & > * {
         font-size: 8rem;
-        color: var(--clock-color);
+        color: var(--digital-clock-color);
 
         @media(min-width: 768px) {
-            font-size: 10rem;
+            font-size: 9rem;
+        }
+    }
+}
+.analog {
+    position: relative;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    border: 5px solid #ccc;
+    background-color: var(--analog-clock-color);
+
+    @media(min-width: 768px) {
+        width: 40rem;
+        height: 40rem;
+    }
+
+    &__hand {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 8rem;
+        transform: rotate(-90deg) translate(-50%, -50%);
+        transform-origin: left center;
+
+        @media(min-width: 768px) {
+            width: 18rem;
+        }
+
+        &--seconds {
+            height: 2px;
+            background-color: var(--seconds-hand-color);
+        }
+
+        &--minutes {
+            height: 3px;
+            background-color: var(--minutes-hand-color);
+        }
+
+        &--hours {
+            width: 6rem;
+            height: 4px;
+            background-color: var(--hours-hand-color);
+
+            @media(min-width: 768px) {
+                width: 14rem;
+            }
         }
     }
 }
