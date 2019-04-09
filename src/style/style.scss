@@ -1,3 +1,31 @@
+:root {
+    --bg-color: rgba(0,0,0,.8);
+    --clock-color: #fff;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
 body {
-    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--bg-color);
+}
+
+.clock {
+    & > * {
+        font-size: 8rem;
+        color: var(--clock-color);
+
+        @media(min-width: 768px) {
+            font-size: 10rem;
+        }
+    }
 }
